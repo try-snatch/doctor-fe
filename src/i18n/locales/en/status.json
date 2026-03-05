@@ -1,0 +1,13 @@
+{
+  "unknown": "Unknown",
+  "opd": "OPD",
+  "referred": "Referred",
+  "careInitiated": "Care Initiated",
+  "registration": "Registration",
+  "hospitalised": "Hospitalised",
+  "inTreatment": "In Treatment",
+  "discharged": "Discharged",
+  "cancelled": "Cancelled",
+  "converted": "Converted",
+  "billed": "Billed"
+}

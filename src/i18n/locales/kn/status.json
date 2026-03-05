@@ -1,0 +1,13 @@
+{
+  "unknown": "ಅಪರಿಚಿತ",
+  "opd": "OPD",
+  "referred": "ರೆಫರ್ ಮಾಡಲಾಗಿದೆ",
+  "careInitiated": "ಆರೈಕೆ ಪ್ರಾರಂಭ",
+  "registration": "ನೋಂದಣಿ",
+  "hospitalised": "ಆಸ್ಪತ್ರೆಯಲ್ಲಿ",
+  "inTreatment": "ಚಿಕಿತ್ಸೆಯಲ್ಲಿ",
+  "discharged": "ಡಿಸ್ಚಾರ್ಜ್",
+  "cancelled": "ರದ್ದಾಗಿದೆ",
+  "converted": "ಪರಿವರ್ತಿತ",
+  "billed": "ಬಿಲ್ ಮಾಡಲಾಗಿದೆ"
+}

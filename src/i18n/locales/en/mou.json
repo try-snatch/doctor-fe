@@ -1,0 +1,102 @@
+{
+  "pageTitle": "Memorandum of Understanding",
+  "instructions": "Please review the agreement below, fill in the required details, and sign to proceed.",
+  "scrollToRead": "Please scroll through the entire agreement before signing",
+
+  "form": {
+    "hospitalName": "Hospital / Clinic Name",
+    "hospitalNamePlaceholder": "Enter hospital or clinic name",
+    "authorizedSignatory": "Authorized Signatory Name",
+    "authorizedSignatoryPlaceholder": "Full name of authorized signatory",
+    "hospitalAddress": "Hospital / Clinic Address",
+    "hospitalAddressPlaceholder": "Enter complete address",
+    "bankDetails": "Bank Details",
+    "bankAccountNumber": "Account Number",
+    "bankAccountNumberPlaceholder": "Enter bank account number",
+    "bankName": "Bank Name",
+    "bankNamePlaceholder": "Enter bank name",
+    "bankBranch": "Branch",
+    "bankBranchPlaceholder": "Enter branch name",
+    "bankIfsc": "IFSC Code",
+    "bankIfscPlaceholder": "Enter IFSC code",
+    "bankAddress": "Bank Address",
+    "bankAddressPlaceholder": "Enter bank address",
+    "professionalFee": "Professional Fee",
+    "professionalFeePlaceholder": "Enter professional fee amount"
+  },
+
+  "signature": {
+    "title": "Digital Signature",
+    "instruction": "Please draw your signature below",
+    "clear": "Clear Signature"
+  },
+
+  "agreement": {
+    "checkbox": "I have read and agree to the terms and conditions of this Memorandum of Understanding",
+    "submit": "Sign & Submit MOU",
+    "submitting": "Submitting..."
+  },
+
+  "messages": {
+    "success": "MOU signed successfully!",
+    "alreadySigned": "You have already signed the MOU.",
+    "signatureRequired": "Please provide your signature",
+    "agreementRequired": "Please agree to the terms and conditions",
+    "submitError": "Failed to submit MOU. Please try again."
+  },
+
+  "document": {
+    "title": "MEMORANDUM OF UNDERSTANDING",
+    "between": "Between",
+    "party1": "EzeeHealth",
+    "party1Trading": "(Dual Mirror Healthcare Pvt Ltd)",
+    "party1Address": "Registered Office: 127, 4th Cross, 1st Main, ST BED area, Koramangala, Karnataka – 560034 ",
+    "and": "AND",
+    "party2Label": "The Hospital/Clinic",
+    "effectiveDate": "Effective Date",
+
+    "section1Title": "1. PURPOSE",
+    "section1Content": "This Memorandum of Understanding (\"MOU\") is entered into between EzeeHealth and the Hospital for the purpose of establishing a collaborative framework for patient referrals. EzeeHealth operates a digital platform (\"EzeeHealth BridgeCare\") that facilitates connections between partner hospitals/clinics and super-specialty hospitals for patient referrals and care coordination.",
+
+    "section2Title": "2. TERM",
+    "section2Content": "This MOU shall be effective from the date of signing and shall remain in force for a period of one (1) year, unless terminated earlier by either party with thirty (30) days' written notice. The MOU shall be automatically renewed for successive one-year periods unless either party provides written notice of non-renewal at least thirty (30) days prior to the expiration of the then-current term.",
+
+    "section3Title": "3. RESPONSIBILITIES OF EZEEHEALTH",
+    "section3Item1": "Provide access to the EzeeHealth BridgeCare digital platform for managing patient referrals",
+    "section3Item2": "Facilitate connections with super-specialty hospitals in the EzeeHealth network",
+    "section3Item3": "Provide training and technical support for using the platform",
+    "section3Item4": "Ensure secure handling of patient data in compliance with applicable laws",
+    "section3Item5": "Process and disburse professional fees in a timely manner",
+
+    "section4Title": "4. RESPONSIBILITIES OF THE HOSPITAL",
+    "section4Item1": "Ensure accurate and complete patient information is provided during referrals",
+    "section4Item2": "Maintain valid medical registrations and licenses",
+    "section4Item3": "Follow the referral protocols established by EzeeHealth",
+    "section4Item4": "Ensure patient consent is obtained before sharing medical records",
+    "section4Item5": "Cooperate with EzeeHealth for quality assurance and audit purposes",
+
+    "section5Title": "5. PAYMENT TERMS",
+    "section5Content": "EzeeHealth shall pay the Hospital a professional fee for each successful patient referral as mutually agreed. Payment shall be processed within thirty (30) days of receiving the billing confirmation from the super-specialty hospital. All payments will be made via bank transfer to the account details provided by the Hospital.",
+
+    "section6Title": "6. CONFIDENTIALITY",
+    "section6Content": "Both parties agree to maintain strict confidentiality of all patient information, business terms, and proprietary information shared during the course of this arrangement. This obligation shall survive the termination of this MOU.",
+
+    "section7Title": "7. DATA PROTECTION",
+    "section7Content": "Both parties shall comply with all applicable data protection and privacy laws, including but not limited to the Information Technology Act, 2000, and the Digital Personal Data Protection Act, 2023. Patient data shall be handled with utmost care and used solely for the purpose of patient referral and care coordination.",
+
+    "section8Title": "8. TERMINATION",
+    "section8Content": "Either party may terminate this MOU by providing thirty (30) days' written notice to the other party. In the event of a material breach by either party, the non-breaching party may terminate this MOU immediately upon written notice. Upon termination, all pending referrals shall be completed, and outstanding payments shall be settled within sixty (60) days.",
+
+    "section9Title": "9. DISPUTE RESOLUTION",
+    "section9Content": "Any disputes arising out of or in connection with this MOU shall be resolved through mutual consultation and negotiation. If the dispute cannot be resolved amicably within thirty (30) days, it shall be referred to arbitration in Bangalore, Karnataka, in accordance with the Arbitration and Conciliation Act, 1996.",
+
+    "section10Title": "10. GOVERNING LAW",
+    "section10Content": "This MOU shall be governed by and construed in accordance with the laws of India. The courts of Bangalore, Karnataka shall have exclusive jurisdiction over any disputes arising from this MOU.",
+
+    "section11Title": "11. GENERAL",
+    "section11Item1": "This MOU constitutes the entire understanding between the parties regarding the subject matter herein.",
+    "section11Item2": "No amendment or modification shall be valid unless made in writing and signed by both parties.",
+    "section11Item3": "Neither party may assign its rights or obligations under this MOU without the prior written consent of the other party.",
+    "section11Item4": "If any provision of this MOU is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "appId": "com.ezhealth",
+  "appName": "EzeeHealth",
+  "webDir": "dist",
+  "server": {
+    "cleartext": true,
+    "androidScheme": "http"
+  },
+  "ios": {
+    "contentInset": "automatic"
+  },
+  "android": {
+    "allowMixedContent": true
+  },
+  "plugins": {
+    "StatusBar": {
+      "overlaysWebView": false,
+      "style": "LIGHT",
+      "backgroundColor": "#4a7dfc"
+    }
+  }
+}

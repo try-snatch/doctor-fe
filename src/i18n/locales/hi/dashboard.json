@@ -1,0 +1,19 @@
+{
+  "welcomeBack": "वापस स्वागत है,",
+  "opd": "OPD",
+  "referrals": "रेफ़रल",
+  "treated": "उपचारित",
+  "revenue": "राजस्व",
+  "patientStatus": "मरीज़ की स्थिति",
+  "careInitiated": "देखभाल शुरू",
+  "registration": "पंजीकरण",
+  "hospitalisation": "अस्पताल में भर्ती",
+  "discharge": "छुट्टी",
+  "recentReferrals": "हालिया रेफ़रल",
+  "viewAll": "सभी देखें",
+  "noRecentReferrals": "कोई हालिया रेफ़रल नहीं",
+  "registerOpdPatient": "OPD मरीज़ पंजीकरण",
+  "newReferral": "नया रेफ़रल",
+  "todayStats": "आज के आंकड़े",
+  "thisMonth": "इस महीने"
+}

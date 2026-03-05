@@ -1,0 +1,19 @@
+{
+  "welcomeBack": "Welcome back,",
+  "opd": "OPD",
+  "referrals": "Referrals",
+  "treated": "Treated",
+  "revenue": "Revenue",
+  "patientStatus": "Patient Status",
+  "careInitiated": "Care Initiated",
+  "registration": "Registration",
+  "hospitalisation": "Hospitalisation",
+  "discharge": "Discharge",
+  "recentReferrals": "Recent Referrals",
+  "viewAll": "View All",
+  "noRecentReferrals": "No recent referrals",
+  "registerOpdPatient": "Register OPD Patient",
+  "newReferral": "New Referral",
+  "todayStats": "Today's Stats",
+  "thisMonth": "This Month"
+}

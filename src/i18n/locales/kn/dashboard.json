@@ -1,0 +1,19 @@
+{
+  "welcomeBack": "ಮರಳಿ ಸ್ವಾಗತ,",
+  "opd": "OPD",
+  "referrals": "ರೆಫರಲ್‌ಗಳು",
+  "treated": "ಚಿಕಿತ್ಸೆ ಪಡೆದ",
+  "revenue": "ಆದಾಯ",
+  "patientStatus": "ರೋಗಿಯ ಸ್ಥಿತಿ",
+  "careInitiated": "ಆರೈಕೆ ಪ್ರಾರಂಭ",
+  "registration": "ನೋಂದಣಿ",
+  "hospitalisation": "ಆಸ್ಪತ್ರೆಗೆ ಸೇರಿಕೆ",
+  "discharge": "ಡಿಸ್ಚಾರ್ಜ್",
+  "recentReferrals": "ಇತ್ತೀಚಿನ ರೆಫರಲ್‌ಗಳು",
+  "viewAll": "ಎಲ್ಲಾ ನೋಡಿ",
+  "noRecentReferrals": "ಇತ್ತೀಚಿನ ರೆಫರಲ್‌ಗಳಿಲ್ಲ",
+  "registerOpdPatient": "OPD ರೋಗಿ ನೋಂದಣಿ",
+  "newReferral": "ಹೊಸ ರೆಫರಲ್",
+  "todayStats": "ಇಂದಿನ ಅಂಕಿಅಂಶಗಳು",
+  "thisMonth": "ಈ ತಿಂಗಳು"
+}

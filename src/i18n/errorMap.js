@@ -1,0 +1,46 @@
+const ERROR_MAP = {
+    'Invalid credentials': 'errors.invalidCredentials',
+    'Invalid credentials.': 'errors.invalidCredentials',
+    'Invalid or expired OTP': 'errors.invalidOtp',
+    'Invalid or expired OTP.': 'errors.invalidOtp',
+    'A user with this mobile number is already registered.': 'errors.mobileExists',
+    'A user with this mobile number already exists.': 'errors.mobileExists',
+    'A user with this email is already registered.': 'errors.emailExists',
+    'A user with this email already exists.': 'errors.emailExists',
+    'Account not found': 'errors.accountNotFound',
+    'Account not found.': 'errors.accountNotFound',
+    'Too many attempts. Please try again later.': 'errors.tooManyAttempts',
+    'Too many attempts': 'errors.tooManyAttempts',
+    'Session expired. Please log in again.': 'errors.sessionExpired',
+    'Session expired': 'errors.sessionExpired',
+    'OTP has expired. Please request a new one.': 'errors.otpExpired',
+    'OTP expired': 'errors.otpExpired',
+    'Invalid or expired reset code': 'errors.invalidResetCode',
+    'Invalid or expired reset code.': 'errors.invalidResetCode',
+    'Passwords do not match': 'errors.passwordMismatch',
+    'Passwords do not match.': 'errors.passwordMismatch',
+    'Email not verified. Please verify your email first.': 'errors.emailNotVerified',
+    'Email not verified': 'errors.emailNotVerified',
+    'Your account has been disabled. Contact support.': 'errors.accountDisabled',
+    'Account disabled': 'errors.accountDisabled',
+    'Staff invitation has expired or is invalid.': 'errors.staffInviteExpired',
+    'Invalid or expired invitation': 'errors.staffInviteExpired',
+    'Failed to fetch': 'errors.failedToFetch',
+    'Network Error': 'errors.networkError',
+    'Network error': 'errors.networkError',
+    'You are not authorized to perform this action.': 'errors.unauthorized',
+    'Unauthorized': 'errors.unauthorized',
+    'Not found': 'errors.notFound',
+    'Server error': 'errors.serverError',
+    'Internal server error': 'errors.serverError',
+    'Two-factor authentication is required.': 'errors.twoFactorRequired',
+    '2FA is required': 'errors.twoFactorRequired',
+    'Invalid or expired token.': 'errors.invalidToken',
+    'Invalid token': 'errors.invalidToken',
+};
+
+export const translateError = (msg, t) => {
+    if (!msg) return t('errors.defaultError');
+    const key = ERROR_MAP[msg];
+    return key ? t(key, { ns: 'common' }) : msg;
+};

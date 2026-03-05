@@ -1,0 +1,13 @@
+{
+  "unknown": "अज्ञात",
+  "opd": "OPD",
+  "referred": "रेफ़र किया गया",
+  "careInitiated": "देखभाल शुरू",
+  "registration": "पंजीकरण",
+  "hospitalised": "अस्पताल में भर्ती",
+  "inTreatment": "उपचार जारी",
+  "discharged": "छुट्टी",
+  "cancelled": "रद्द",
+  "converted": "परिवर्तित",
+  "billed": "बिल किया गया"
+}
