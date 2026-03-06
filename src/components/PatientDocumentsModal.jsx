@@ -37,7 +37,7 @@ const formatDate = (dateStr) => {
 };
 
 const PatientDocumentsModal = ({ patient, onClose }) => {
-    const { t } = useTranslation(['documents', 'common']);
+    const { t, i18n } = useTranslation(['documents', 'common']);
     const toast = useToast();
     const [documents, setDocuments] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -53,11 +53,12 @@ const PatientDocumentsModal = ({ patient, onClose }) => {
 
     const patientId = patient.id;
     const patientName = patient.full_name || patient.name || 'Patient';
+    const insightLangParam = i18n.language !== 'en' ? `?lang=${i18n.language}` : '';
 
     const fetchDocuments = async () => {
         try {
             setLoading(true);
-            const res = await api.get(`/api/patients/${patientId}/documents/`);
+            const res = await api.get(`/api/patients/${patientId}/documents/${insightLangParam}`);
             setDocuments(Array.isArray(res.data) ? res.data : []);
         } catch (error) {
             toast.error(t('documents:failedToLoadDocs'));
@@ -173,7 +174,7 @@ const PatientDocumentsModal = ({ patient, onClose }) => {
     const handleGetInsights = async (docId) => {
         setLoadingInsights((prev) => ({ ...prev, [docId]: true }));
         try {
-            const res = await api.get(`/api/patients/${patientId}/documents/${docId}/insights/`);
+            const res = await api.get(`/api/patients/${patientId}/documents/${docId}/insights/${insightLangParam}`);
             if (res.status === 202) {
                 // Processing started — poll until ready
                 pollForInsights(docId);
@@ -199,7 +200,7 @@ const PatientDocumentsModal = ({ patient, onClose }) => {
         }
         pollingRefs.current[docId] = setTimeout(async () => {
             try {
-                const res = await api.get(`/api/patients/${patientId}/documents/${docId}/insights/`);
+                const res = await api.get(`/api/patients/${patientId}/documents/${docId}/insights/${insightLangParam}`);
                 if (res.status === 202) {
                     pollForInsights(docId, attempt + 1);
                     return;

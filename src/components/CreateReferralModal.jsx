@@ -118,8 +118,8 @@ const CreateReferralModal = ({ patient, onClose, onSuccess }) => {
                                 value={hospitalSearch}
                                 onChange={(e) => {
                                     setHospitalSearch(e.target.value);
+                                    setFormData(prev => ({ ...prev, suggested_sshs: e.target.value }));
                                     setShowHospitalDropdown(true);
-                                    if (!e.target.value) setFormData(prev => ({ ...prev, suggested_sshs: '' }));
                                 }}
                                 onFocus={() => setShowHospitalDropdown(true)}
                                 onBlur={() => setTimeout(() => setShowHospitalDropdown(false), 200)}

@@ -38,5 +38,7 @@
   "name": "नाम",
   "email": "ईमेल",
   "phone": "फ़ोन",
-  "clinic": "क्लिनिक"
+  "clinic": "क्लिनिक",
+  "mouAgreement": "MOU अनुबंध",
+  "viewSignedMou": "हस्ताक्षरित MOU देखें"
 }

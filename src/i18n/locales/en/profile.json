@@ -38,5 +38,7 @@
   "name": "Name",
   "email": "Email",
   "phone": "Phone",
-  "clinic": "Clinic"
+  "clinic": "Clinic",
+  "mouAgreement": "MOU Agreement",
+  "viewSignedMou": "View Signed MOU"
 }

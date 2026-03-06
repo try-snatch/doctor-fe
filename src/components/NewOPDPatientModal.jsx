@@ -66,6 +66,11 @@ const NewOPDPatientModal = ({ onClose }) => {
             return;
         }
 
+        if (!formData.phone.trim() && !formData.email.trim()) {
+            toast.error(t('patients:phoneOrEmailRequired'));
+            return;
+        }
+
         setLoading(true);
         try {
             const fd = new FormData();
@@ -122,7 +127,10 @@ const NewOPDPatientModal = ({ onClose }) => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">{t('patients:phone')}</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                            {t('patients:phone')} <span className="text-red-500">*</span>
+                            <span className="text-xs font-normal text-gray-400 ml-1">(or email)</span>
+                        </label>
                         <input
                             type="tel"
                             name="phone"
@@ -134,7 +142,10 @@ const NewOPDPatientModal = ({ onClose }) => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">{t('patients:email')}</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                            {t('patients:email')} <span className="text-red-500">*</span>
+                            <span className="text-xs font-normal text-gray-400 ml-1">(or phone)</span>
+                        </label>
                         <input
                             type="email"
                             name="email"

@@ -6,6 +6,7 @@ import { useToast } from '../context/ToastContext';
 import { useTranslation } from 'react-i18next';
 import { translateError } from '../i18n/errorMap';
 import LanguageSelector from '../components/LanguageSelector';
+import { getFullUrl } from '../utils/api';
 
 
 // ============== ICONS ==============
@@ -106,6 +107,29 @@ const InfoRow = ({ icon: Icon, label, value, fallback, iconBgColor = 'bg-blue-50
         </div>
     </div>
 );
+
+// ============== MOU ROW COMPONENT ==============
+const MOURow = ({ viewToken, label, viewLabel }) => {
+    const mouUrl = getFullUrl(`/api/auth/mou/${viewToken}/`);
+    return (
+        <div className="flex items-center gap-4 py-4 border-b border-gray-100 last:border-b-0">
+            <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-green-600 shrink-0">
+                <DocumentIcon />
+            </div>
+            <div className="flex-1 min-w-0">
+                <p className="text-sm text-gray-400 mb-0.5">{label}</p>
+                <a
+                    href={mouUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-base font-medium text-primary-500 hover:text-primary-600 hover:underline transition-colors"
+                >
+                    {viewLabel}
+                </a>
+            </div>
+        </div>
+    );
+};
 
 // ============== EDIT MODAL COMPONENT ==============
 const EditProfileModal = ({ user, onClose, onSave, t }) => {
@@ -519,6 +543,13 @@ const ProfilePage = () => {
                             iconBgColor="bg-blue-50"
                             iconColor="text-blue-500"
                         />
+                        {user?.mou_signed && user?.mou_view_token && (
+                            <MOURow
+                                viewToken={user.mou_view_token}
+                                label={t('profile:mouAgreement')}
+                                viewLabel={t('profile:viewSignedMou')}
+                            />
+                        )}
                     </div>
 
                     {/* Language Selector */}

@@ -122,27 +122,6 @@ const NewReferralModal = ({ onClose }) => {
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
     const [loading, setLoading] = useState(false);
-    const [hospitals, setHospitals] = useState([]);
-    const [hospitalSearch, setHospitalSearch] = useState('');
-    const [showHospitalDropdown, setShowHospitalDropdown] = useState(false);
-
-    // Fetch hospitals from Zoho
-    useEffect(() => {
-        api.get('/api/hospitals/')
-            .then(res => setHospitals(Array.isArray(res.data) ? res.data : []))
-            .catch(() => {});
-    }, []);
-
-    const filteredHospitals = hospitals.filter(h =>
-        h.name.toLowerCase().includes(hospitalSearch.toLowerCase())
-    );
-
-    const selectHospital = (name) => {
-        setFormData(prev => ({ ...prev, hospital: name }));
-        setHospitalSearch(name);
-        setShowHospitalDropdown(false);
-        if (errors.hospital) setErrors(prev => ({ ...prev, hospital: '' }));
-    };
 
     // Prevent body scroll when modal is open
     useEffect(() => {
@@ -442,50 +421,24 @@ const NewReferralModal = ({ onClose }) => {
                         />
                     </FormField>
 
-                    {/* Hospital */}
+                    {/* Hospital / SSH */}
                     <FormField
-                        label={t('patients:hospital')}
+                        label={t('patients:suggestedHospital')}
                         icon={HospitalIcon}
                         error={errors.hospital}
                         touched={touched.hospital}
                         t={t}
                     >
-                        <div className="relative">
-                            <input
-                                type="text"
-                                value={hospitalSearch}
-                                onChange={(e) => {
-                                    setHospitalSearch(e.target.value);
-                                    setShowHospitalDropdown(true);
-                                    if (!e.target.value) setFormData(prev => ({ ...prev, hospital: '' }));
-                                }}
-                                onFocus={() => setShowHospitalDropdown(true)}
-                                onBlur={() => {
-                                    // Delay to allow click on dropdown item
-                                    setTimeout(() => setShowHospitalDropdown(false), 200);
-                                    handleBlur('hospital');
-                                }}
-                                className={getInputClasses('hospital')}
-                                placeholder={t('patients:searchHospitals')}
-                                disabled={loading}
-                            />
-                            {showHospitalDropdown && (hospitalSearch === '' || filteredHospitals.length > 0) && (
-                                <div className="absolute z-10 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-lg max-h-48 overflow-y-auto">
-                                    {filteredHospitals.map(h => (
-                                        <button
-                                            key={h.id}
-                                            type="button"
-                                            onMouseDown={() => selectHospital(h.name)}
-                                            className={`w-full text-left px-4 py-3 text-sm hover:bg-primary-50 transition-colors ${
-                                                formData.hospital === h.name ? 'bg-primary-50 text-primary-600 font-medium' : 'text-gray-700'
-                                            }`}
-                                        >
-                                            {h.name}
-                                        </button>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
+                        <input
+                            type="text"
+                            name="hospital"
+                            value={formData.hospital}
+                            onChange={handleChange}
+                            onBlur={() => handleBlur('hospital')}
+                            className={getInputClasses('hospital')}
+                            placeholder={t('patients:suggestedHospitalPlaceholder')}
+                            disabled={loading}
+                        />
                     </FormField>
 
                     {/* Primary Diagnosis */}
