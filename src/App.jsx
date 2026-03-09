@@ -17,6 +17,8 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import StaffSetupPage from './pages/StaffSetupPage';
 import MOUPage from './pages/MOUPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfUsePage from './pages/TermsOfUsePage';
 
 // Configure status bar on native platforms
 if (Capacitor.isNativePlatform()) {
@@ -82,6 +84,8 @@ function App() {
                     <Route path="/forgot-password" element={<ForgotPasswordPage />} />
                     <Route path="/reset-password" element={<ResetPasswordPage />} />
                     <Route path="/staff/setup/:invitationCode" element={<StaffSetupPage />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                    <Route path="/terms-of-use" element={<TermsOfUsePage />} />
 
                     <Route
                         path="/sign-mou"
