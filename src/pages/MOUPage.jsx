@@ -48,7 +48,6 @@ const MOUPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Validate required fields
         if (!formData.hospital_name.trim()) {
             toast.error(t('mou:form.hospitalName') + ' is required');
             return;
@@ -61,14 +60,32 @@ const MOUPage = () => {
             toast.error(t('mou:form.hospitalAddress') + ' is required');
             return;
         }
+        if (!formData.bank_account_number.trim()) {
+            toast.error(t('mou:form.bankAccountNumber') + ' is required');
+            return;
+        }
+        if (!formData.bank_name.trim()) {
+            toast.error(t('mou:form.bankName') + ' is required');
+            return;
+        }
+        if (!formData.bank_branch.trim()) {
+            toast.error(t('mou:form.bankBranch') + ' is required');
+            return;
+        }
+        if (!formData.bank_ifsc.trim()) {
+            toast.error(t('mou:form.bankIfsc') + ' is required');
+            return;
+        }
+        if (!formData.bank_address.trim()) {
+            toast.error(t('mou:form.bankAddress') + ' is required');
+            return;
+        }
 
-        // Check signature
         if (sigCanvas.current?.isEmpty()) {
             toast.error(t('mou:messages.signatureRequired'));
             return;
         }
 
-        // Check agreement
         if (!agreed) {
             toast.error(t('mou:messages.agreementRequired'));
             return;
@@ -117,19 +134,10 @@ const MOUPage = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} noValidate>
-                    {/* MOU Document Content */}
-                    <div className="bg-white rounded-2xl shadow-card p-6 mb-6 max-h-[60vh] overflow-y-auto">
-                        <MOUContent
-                            hospitalName={formData.hospital_name}
-                            signatoryName={formData.authorized_signatory_name}
-                            effectiveDate={today}
-                        />
-                    </div>
-
-                    {/* Editable Form Fields */}
+                    {/* Editable Form Fields — BEFORE the document so user fills first */}
                     <div className="bg-white rounded-2xl shadow-card p-6 mb-6">
                         <h3 className="text-lg font-bold text-gray-900 mb-4">
-                            {t('mou:document.party2Label')}
+                            {t('mou:form.hospitalDetails')}
                         </h3>
 
                         {/* Hospital Name */}
@@ -188,10 +196,9 @@ const MOUPage = () => {
                         </h3>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {/* Account Number */}
                             <div>
                                 <label className="block text-sm font-semibold text-gray-900 mb-1.5">
-                                    {t('mou:form.bankAccountNumber')}
+                                    {t('mou:form.bankAccountNumber')} <span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="text"
@@ -204,10 +211,9 @@ const MOUPage = () => {
                                 />
                             </div>
 
-                            {/* Bank Name */}
                             <div>
                                 <label className="block text-sm font-semibold text-gray-900 mb-1.5">
-                                    {t('mou:form.bankName')}
+                                    {t('mou:form.bankName')} <span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="text"
@@ -220,10 +226,9 @@ const MOUPage = () => {
                                 />
                             </div>
 
-                            {/* Branch */}
                             <div>
                                 <label className="block text-sm font-semibold text-gray-900 mb-1.5">
-                                    {t('mou:form.bankBranch')}
+                                    {t('mou:form.bankBranch')} <span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="text"
@@ -236,10 +241,9 @@ const MOUPage = () => {
                                 />
                             </div>
 
-                            {/* IFSC Code */}
                             <div>
                                 <label className="block text-sm font-semibold text-gray-900 mb-1.5">
-                                    {t('mou:form.bankIfsc')}
+                                    {t('mou:form.bankIfsc')} <span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="text"
@@ -253,10 +257,9 @@ const MOUPage = () => {
                             </div>
                         </div>
 
-                        {/* Bank Address */}
                         <div className="mt-4">
                             <label className="block text-sm font-semibold text-gray-900 mb-1.5">
-                                {t('mou:form.bankAddress')}
+                                {t('mou:form.bankAddress')} <span className="text-red-500">*</span>
                             </label>
                             <textarea
                                 name="bank_address"
@@ -269,7 +272,6 @@ const MOUPage = () => {
                             />
                         </div>
 
-                        {/* Professional Fee */}
                         <div className="mt-4">
                             <label className="block text-sm font-semibold text-gray-900 mb-1.5">
                                 {t('mou:form.professionalFee')}
@@ -284,6 +286,21 @@ const MOUPage = () => {
                                 disabled={loading}
                             />
                         </div>
+                    </div>
+
+                    {/* MOU Document Content — shows live with filled values */}
+                    <div className="bg-white rounded-2xl shadow-card p-6 mb-6 max-h-[60vh] overflow-y-auto">
+                        <MOUContent
+                            hospitalName={formData.hospital_name}
+                            signatoryName={formData.authorized_signatory_name}
+                            effectiveDate={today}
+                            bankAccountNumber={formData.bank_account_number}
+                            bankName={formData.bank_name}
+                            bankBranch={formData.bank_branch}
+                            bankIfsc={formData.bank_ifsc}
+                            bankAddress={formData.bank_address || formData.hospital_address}
+                            professionalFee={formData.professional_fee}
+                        />
                     </div>
 
                     {/* Signature Section */}

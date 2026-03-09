@@ -39,8 +39,8 @@ const getApiBaseUrl = () => {
     return apiUrl;
   }
 
-  // For web, use relative URLs (will be proxied in dev, direct in prod)
-  console.log('  🎯 Using relative URLs (proxied)');
+  // For web, use relative URLs (proxied in dev by Vite, same-domain in prod)
+  console.log('  🎯 Using relative URLs');
   return '';
 };
 
