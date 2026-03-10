@@ -521,14 +521,14 @@ const DashboardPage = () => {
                     <div className="grid grid-cols-3 gap-3">
                         {stages.length > 0 ? (
                             stages.map((stage, idx) => (
-                                <StatusCard key={idx} stage={stage} onClick={() => navigate('/patients?tab=cases')} />
+                                <StatusCard key={idx} stage={stage} onClick={() => navigate(`/patients?tab=cases&stage=${encodeURIComponent(stage.title)}`)} />
                             ))
                         ) : (
                             <>
-                                <StatusCard stage={{ title: t('dashboard:careInitiated'), value: 0, color: 'primary' }} onClick={() => navigate('/patients?tab=cases')} />
-                                <StatusCard stage={{ title: t('dashboard:registration'), value: 0, color: 'warning' }} onClick={() => navigate('/patients?tab=cases')} />
-                                <StatusCard stage={{ title: t('dashboard:hospitalisation'), value: 0, color: 'info' }} onClick={() => navigate('/patients?tab=cases')} />
-                                <StatusCard stage={{ title: t('dashboard:discharge'), value: 0, color: 'success' }} onClick={() => navigate('/patients?tab=cases')} />
+                                <StatusCard stage={{ title: t('dashboard:careInitiated'), value: 0, color: 'primary' }} onClick={() => navigate('/patients?tab=cases&stage=Care Initiated')} />
+                                <StatusCard stage={{ title: t('dashboard:registration'), value: 0, color: 'warning' }} onClick={() => navigate('/patients?tab=cases&stage=Registration')} />
+                                <StatusCard stage={{ title: t('dashboard:hospitalisation'), value: 0, color: 'info' }} onClick={() => navigate('/patients?tab=cases&stage=Hospitalisation')} />
+                                <StatusCard stage={{ title: t('dashboard:discharge'), value: 0, color: 'success' }} onClick={() => navigate('/patients?tab=cases&stage=Discharge')} />
                             </>
                         )}
                     </div>

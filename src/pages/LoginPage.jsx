@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { translateError } from '../i18n/errorMap';
 import LanguageSelector from '../components/LanguageSelector';
 import {
-    validatePhone,
     validateOtp,
     validatePassword,
     validateEmailOrPhone,
@@ -172,11 +171,12 @@ const LoginPage = () => {
 
     const handleResendOtp = async () => {
         // Resend requires first-factor (password). We kept password in state from step 1.
-        const phoneValidation = validatePhone(identifier || submittedIdentifier || '');
+        const identifierValue = submittedIdentifier || identifier || '';
+        const identifierValidation = validateEmailOrPhone(identifierValue);
         const passValidation = validatePassword(password || '');
 
-        if (!phoneValidation.isValid) {
-            toast.error(t(phoneValidation.errors[0]));
+        if (!identifierValidation.isValid) {
+            toast.error(t(identifierValidation.errors[0]));
             setStep(1);
             return;
         }
@@ -186,9 +186,11 @@ const LoginPage = () => {
             return;
         }
 
+        const cleanIdentifier = identifierValidation.cleanEmail || identifierValidation.cleanPhone || identifierValue.trim();
+
         setLoading(true);
         try {
-            await login(phoneValidation.cleanPhone, password);
+            await login(cleanIdentifier, password);
             toast.success(t('auth:login.otpResent'));
         } catch (err) {
             const errorMsg = err?.error || err?.message || '';

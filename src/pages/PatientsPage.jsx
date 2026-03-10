@@ -406,10 +406,11 @@ const PatientsPage = () => {
     const toast = useToast();
     const [searchParams] = useSearchParams();
     const initialTab = VALID_TABS.includes(searchParams.get('tab')) ? searchParams.get('tab') : 'opd';
+    const initialStage = searchParams.get('stage') || 'all';
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState(initialTab);
-    const [casesStageFilter, setCasesStageFilter] = useState('all');
+    const [casesStageFilter, setCasesStageFilter] = useState(initialStage);
     const [searchTerm, setSearchTerm] = useState('');
     const [showOPDModal, setShowOPDModal] = useState(false);
     const [showReferralModal, setShowReferralModal] = useState(false);

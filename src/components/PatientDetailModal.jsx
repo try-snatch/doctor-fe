@@ -331,7 +331,7 @@ const PatientDetailModal = ({ patient, onClose, onUpdate }) => {
                                 <CalendarIcon />
                                 <div>
                                     <p className="text-sm text-gray-400">{t('patients:createdOn')}</p>
-                                    <p className="text-base font-semibold text-gray-900">{formatDateTime(patient.date)}</p>
+                                    <p className="text-base font-semibold text-gray-900">{formatDateTime(patient.date || patient.created_at)}</p>
                                 </div>
                             </div>
                         </InfoCard>
