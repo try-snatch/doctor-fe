@@ -74,6 +74,7 @@
   "uploadLinkGenerated": "Upload link generated (patient has no email or phone on file)",
   "failedToSendLink": "Failed to send upload link",
   "sending": "Sending...",
+  "view": "View",
   "download": "Download",
   "delete": "Delete"
 }

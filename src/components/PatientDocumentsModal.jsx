@@ -36,6 +36,43 @@ const formatDate = (dateStr) => {
     return new Date(dateStr).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
 };
 
+const isImageFile = (doc) => {
+    const ext = (doc.file_extension || '').toLowerCase();
+    return ['jpg', 'jpeg', 'png', 'bmp', 'tiff', 'webp'].includes(ext);
+};
+
+const DocumentViewer = ({ doc, onClose, t }) => (
+    <div className="fixed inset-0 bg-black/70 z-[60] flex flex-col" onClick={onClose}>
+        <div className="flex items-center justify-between px-4 py-3 bg-black/40 shrink-0">
+            <p className="text-white text-sm font-medium truncate flex-1 mr-3">
+                {doc.title || t('documents:untitled')}
+            </p>
+            <button
+                onClick={onClose}
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors shrink-0"
+            >
+                <CloseIcon />
+            </button>
+        </div>
+        <div className="flex-1 overflow-auto flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
+            {isImageFile(doc) ? (
+                <img
+                    src={doc.presigned_url}
+                    alt={doc.title || 'Document'}
+                    className="max-w-full max-h-full object-contain rounded-lg"
+                />
+            ) : (
+                <iframe
+                    src={doc.presigned_url}
+                    title={doc.title || 'Document'}
+                    className="w-full h-full bg-white rounded-lg"
+                    style={{ minHeight: '80vh' }}
+                />
+            )}
+        </div>
+    </div>
+);
+
 const PatientDocumentsModal = ({ patient, onClose }) => {
     const { t, i18n } = useTranslation(['documents', 'common']);
     const toast = useToast();
@@ -49,6 +86,7 @@ const PatientDocumentsModal = ({ patient, onClose }) => {
     const [expandedInsights, setExpandedInsights] = useState({});
     const [loadingInsights, setLoadingInsights] = useState({});
     const [sendingUploadLink, setSendingUploadLink] = useState(false);
+    const [viewingDoc, setViewingDoc] = useState(null);
     const fileInputRef = useRef(null);
 
     const patientId = patient.id;
@@ -245,6 +283,9 @@ const PatientDocumentsModal = ({ patient, onClose }) => {
 
     return (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
+            {viewingDoc && (
+                <DocumentViewer doc={viewingDoc} onClose={() => setViewingDoc(null)} t={t} />
+            )}
             <div className="bg-white rounded-t-3xl sm:rounded-3xl w-full sm:max-w-lg max-h-[90vh] flex flex-col">
                 {/* Header */}
                 <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 shrink-0">
@@ -371,6 +412,14 @@ const PatientDocumentsModal = ({ patient, onClose }) => {
 
                                         {/* Action buttons */}
                                         <div className="flex flex-wrap gap-2">
+                                            {doc.presigned_url && (
+                                                <button
+                                                    onClick={() => setViewingDoc(doc)}
+                                                    className="px-3 py-1.5 bg-emerald-50 text-emerald-600 text-xs font-medium rounded-lg hover:bg-emerald-100 transition-colors"
+                                                >
+                                                    {t('documents:view')}
+                                                </button>
+                                            )}
                                             {doc.presigned_url && (
                                                 <a
                                                     href={doc.presigned_url}
