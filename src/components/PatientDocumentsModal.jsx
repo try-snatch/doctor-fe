@@ -57,13 +57,13 @@ const DocumentViewer = ({ doc, onClose, t }) => (
         <div className="flex-1 overflow-auto flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
             {isImageFile(doc) ? (
                 <img
-                    src={doc.presigned_url}
+                    src={doc.view_url || doc.presigned_url}
                     alt={doc.title || 'Document'}
                     className="max-w-full max-h-full object-contain rounded-lg"
                 />
             ) : (
                 <iframe
-                    src={doc.presigned_url}
+                    src={doc.view_url || doc.presigned_url}
                     title={doc.title || 'Document'}
                     className="w-full h-full bg-white rounded-lg"
                     style={{ minHeight: '80vh' }}
