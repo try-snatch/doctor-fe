@@ -71,6 +71,22 @@ const NewOPDPatientModal = ({ onClose }) => {
             return;
         }
 
+        if (formData.phone.trim()) {
+            const cleanPhone = formData.phone.replace(/\D/g, '');
+            if (cleanPhone.length < 10) {
+                toast.error(t('patients:phoneMinDigits', 'Phone number must be at least 10 digits'));
+                return;
+            }
+            if (cleanPhone.length > 10) {
+                toast.error(t('patients:phoneTooLong', 'Phone number is too long'));
+                return;
+            }
+            if (!/^[0-9]\d{9}$/.test(cleanPhone)) {
+                toast.error(t('patients:phoneInvalid', 'Please enter a valid phone number'));
+                return;
+            }
+        }
+
         setLoading(true);
         try {
             const fd = new FormData();

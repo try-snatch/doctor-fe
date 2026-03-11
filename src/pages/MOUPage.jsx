@@ -80,11 +80,6 @@ const MOUPage = () => {
             toast.error(t('mou:form.bankAddress') + ' is required');
             return;
         }
-        if (!formData.professional_fee.trim()) {
-            toast.error(t('mou:form.professionalFee') + ' is required');
-            return;
-        }
-
         if (sigCanvas.current?.isEmpty()) {
             toast.error(t('mou:messages.signatureRequired'));
             return;
@@ -278,7 +273,7 @@ const MOUPage = () => {
 
                         <div className="mt-4">
                             <label className="block text-sm font-semibold text-gray-900 mb-1.5">
-                                {t('mou:form.professionalFee')} <span className="text-red-500">*</span>
+                                {t('mou:form.professionalFee')}
                             </label>
                             <input
                                 type="text"
@@ -298,6 +293,7 @@ const MOUPage = () => {
                             hospitalName={formData.hospital_name}
                             signatoryName={formData.authorized_signatory_name}
                             effectiveDate={today}
+                            hospitalAddress={formData.hospital_address}
                             bankAccountNumber={formData.bank_account_number}
                             bankName={formData.bank_name}
                             bankBranch={formData.bank_branch}

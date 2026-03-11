@@ -348,26 +348,26 @@ export const validatePatientPhone = (phone) => {
         return { isValid: false, errors, cleanPhone: '' };
     }
 
-    if (cleanPhone.length < 10) {
-        errors.push('validation:phoneMinDigits');
-    }
+    // Accept 10 digits or 91+10 digits (Indian format)
+    const indianPhoneRegex = /^(?:91)?[0-9]\d{9}$/;
 
-    if (cleanPhone.length > 10) {
-        errors.push('validation:phoneTooLong');
-    }
-
-    // Basic validation for Indian phone numbers
-    if (cleanPhone.length >= 10) {
-        const last10 = cleanPhone.slice(-10);
-        if (!/^[0-9]\d{9}$/.test(last10)) {
+    if (!indianPhoneRegex.test(cleanPhone)) {
+        if (cleanPhone.length < 10) {
+            errors.push('validation:phoneMinDigits');
+        } else if (cleanPhone.length > 12) {
+            errors.push('validation:phoneTooLong');
+        } else {
             errors.push('validation:phoneInvalid');
         }
     }
 
+    // Normalize to last 10 digits
+    const normalized = cleanPhone.length > 10 ? cleanPhone.slice(-10) : cleanPhone;
+
     return {
         isValid: errors.length === 0,
         errors,
-        cleanPhone,
+        cleanPhone: normalized,
     };
 };
 
@@ -579,26 +579,26 @@ export const validateStaffMobile = (phone, isRequired = true) => {
         return { isValid: !isRequired, errors, cleanPhone: '' };
     }
 
-    if (cleanPhone.length < 10) {
-        errors.push('validation:mobileMinDigits');
-    }
+    // Accept 10 digits or 91+10 digits (Indian format)
+    const indianPhoneRegex = /^(?:91)?[0-9]\d{9}$/;
 
-    if (cleanPhone.length > 10) {
-        errors.push('validation:mobileTooLong');
-    }
-
-    // Basic validation for Indian phone numbers
-    if (cleanPhone.length >= 10) {
-        const last10 = cleanPhone.slice(-10);
-        if (!/^[0-9]\d{9}$/.test(last10)) {
+    if (!indianPhoneRegex.test(cleanPhone)) {
+        if (cleanPhone.length < 10) {
+            errors.push('validation:mobileMinDigits');
+        } else if (cleanPhone.length > 12) {
+            errors.push('validation:mobileTooLong');
+        } else {
             errors.push('validation:staffMobileInvalid');
         }
     }
 
+    // Normalize to last 10 digits for storage
+    const normalized = cleanPhone.length > 10 ? cleanPhone.slice(-10) : cleanPhone;
+
     return {
         isValid: errors.length === 0,
         errors,
-        cleanPhone,
+        cleanPhone: normalized,
     };
 };
 
